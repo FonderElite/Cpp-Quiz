@@ -1,7 +1,12 @@
 #include <iostream>
+#include <ctime>
 using namespace std;
 class Quiz{
   public:
+  virtual void third_question(string third_ans){
+      string answer_three = "Pointer";
+      
+  }
   virtual void question(string answer){
  string answer_one = "Physical";
   try{
@@ -39,6 +44,15 @@ int main(){
     Quizn2 n2;
     Quiz *q1 = &n;
     Quizn2 *q2 = &n2;
+     // current date/time based on current system
+   time_t now = time(0);
+   // convert now to string form
+   char* dt = ctime(&now);
+   // convert now to tm struct for UTC
+   tm *gmtm = gmtime(&now);
+   dt = asctime(gmtm);
+   cout << "The UTC date and time is:"<< dt << endl;
+    cout<<"Quiz By FonderElite"<<endl;
 string question_one = "First Low Layer out of 7 in Osi Layers: ";
  cout<<question_one;
     string ans;
