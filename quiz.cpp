@@ -18,6 +18,7 @@ class Quiz{
 }
 
 };
+//First Main Class will be inheritted by other classes
 class Quizn2:public Quiz{
     public:
     void question_two(string answer2){
@@ -72,17 +73,36 @@ class Quizn2:public Quiz{
   
       }
   }
-        
+    };
+      class Quizn5:public Quiz{
+        public:
+         virtual void fifth_question(string fifth_ans){
+      string answer_five = "Algorithm";
+      try{
+          if(fifth_ans == answer_five){
+              cout<<"Correct!"<<endl;
+          }else{
+              throw(fifth_ans);
+          }
+      
+      }  catch(string wrong5){
+  cout << "Wrong Answer!!!\n";
+  cout << "Answer is: "<<answer_five<<endl;
+  
+      }
+  }
     };
 int main(){
     Quiz n;
     Quizn2 n2;
     Quizn3 n3;
     Quizn4 n4;
+    Quizn5 n5;
     Quiz *q1 = &n;
     Quizn2 *q2 = &n2;
     Quizn3 *q3 = &n3;
     Quizn4 *q4 = &n4;
+    Quizn5 *q5 = &n5;
      // current date/time based on current system
    time_t now = time(0);
    // convert now to string form
@@ -92,6 +112,7 @@ int main(){
    dt = asctime(gmtm);
    cout << "The UTC date and time is:"<< dt << endl;
     cout<<"Quiz By FonderElite"<<endl;
+    cout<<"All Answers must begin with a capital letter."<<endl;
 string question_one = "First Low Layer out of 7 in Osi Layers: ";
  cout<<question_one;
     string ans;
@@ -113,6 +134,12 @@ string question_one = "First Low Layer out of 7 in Osi Layers: ";
    cout<<"It was originally developed by Netscape as a means to add dynamic and interactive elements to websites: ";
      cin >> ans_four;
      q4->fourth_question(ans_four);
-        return 0;
+     string ans_five;
+     string question_five = "Is a finite list of instructions used to perform a task, specifically in computing: ";
+     cout<<question_five;
+     cin >> ans_five;
+     q5->fifth_question(ans_five);
+     cout<<"\n======================Thank You For Taking the quiz======================";
+    return 0;
 }
 
