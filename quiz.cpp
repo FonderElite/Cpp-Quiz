@@ -14,7 +14,7 @@ class Quiz{
           cout<<"Correct Answer!"<<endl;
           ofstream file1;
           file1.open ("correct/correct.txt");
-          file1 << "1";
+          file1 << "1\n";
           file1.close();
       }else{
           throw(answer);
@@ -27,7 +27,7 @@ class Quiz{
 
 };
 
-class Quizn2:public Quiz{
+class Quizn2{
     public:
     void question_two(string answer2){
          string answer_two = "QuantumComputing";
@@ -36,7 +36,7 @@ class Quizn2:public Quiz{
           cout<<"Correct Answer!"<<endl;
           ofstream outfile2;
    outfile2.open("correct/correct.txt",ios_base::app); // append instead of overwrite
-    outfile2 << "2";
+    outfile2 << "2\n";
       }else{
         throw(answer2);
       }
@@ -47,7 +47,7 @@ class Quizn2:public Quiz{
 } 
 }
     };
-    class Quizn3:public Quiz{
+    class Quizn3{
         public:
          virtual void third_question(string third_ans){
       string answer_three = "Pointer";
@@ -56,7 +56,7 @@ class Quizn2:public Quiz{
               cout<<"Correct!"<<endl;
           ofstream outfile3;
    outfile3.open("correct/correct.txt",ios_base::app); // append instead of overwrite
-    outfile3 << "3";
+    outfile3 << "3\n";
           }else{
               throw(third_ans);
           }
@@ -79,7 +79,7 @@ class Quizn2:public Quiz{
               cout<<"Correct!"<<endl;
           ofstream outfile4;
          outfile4.open("correct/correct.txt",ios_base::app); // append instead of overwrite
-         outfile4 << "4";
+         outfile4 << "4\n";
           }else{
               throw(fourth_ans);
           }
@@ -100,7 +100,7 @@ class Quizn2:public Quiz{
               cout<<"Correct!"<<endl;
           ofstream outfile5;
          outfile5.open("correct/correct.txt",ios_base::app); // append instead of overwrite
-         outfile5 << "5";
+         outfile5 << "5\n";
           }else{
               throw(fifth_ans);
           }
@@ -116,14 +116,14 @@ class Quizn2:public Quiz{
         public:
         void checkFile(){
             try{
-       struct stat st;
+                struct stat st;
        if (stat("correct",&st) != 0){
              cout<<"Making a directory to store correct answers..."<<endl;
                 system("sleep 1.5");
                 system("mkdir correct");
        }
        if(stat("correct/correct.txt",&st) == 0){
-          system("rm -r correct/correct.txt")
+          system("rm -r correct/correct.txt");
 }
   if(stat("correct",&st) == 0){
         printf("Directory for storing answers is present.\n");
@@ -136,12 +136,36 @@ class Quizn2:public Quiz{
         }
     }
     };
+    class lineCount{
+        public:
+         void countLines(){
+            string Err = "Error!";
+            try{
+                struct stat st;
+              if(stat("correct/correct.txt",&st) == 0){
+                      int count = 0;
+                    string line;
+         /* Creating input filestream */ 
+       ifstream file("correct/correct.txt");
+       while (getline(file, line));
+        count++;
+        cout << "Numbers of lines in the file : " << count << endl;
+              }else{
+                  throw(Err);
+              }
+            }catch(string Error){
+               printf("\x1B[31mFileNotFoundError\033[0m\n");
+            };
+        };
+        
+    };
 int main(){
     Quiz n;
     Quizn2 n2;
     Quizn3 n3;
     Quizn4 n4;
     Quizn5 n5;
+    lineCount lc;
     makeFile m;
     Quiz *q1 = &n;
     Quizn2 *q2 = &n2;
@@ -149,6 +173,7 @@ int main(){
     Quizn4 *q4 = &n4;
     Quizn5 *q5 = &n5;
     makeFile *fl = &m;
+    lineCount *line = &lc;
     fl->checkFile();
      // current date/time based on current system
    time_t now = time(0);
@@ -187,8 +212,7 @@ string question_one = "First Low Layer out of 7 in Osi Layers: ";
      cout<<question_five;
      cin >> ans_five;
      q5->fifth_question(ans_five);
-     
+     line->countLines();
        printf("\x1B[32m======================Thank You For Taking the quiz======================\033[0m\t\t");
     return 0;
 }
-             
