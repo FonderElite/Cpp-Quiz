@@ -12,7 +12,7 @@ class Quiz{
           throw(answer);
       }
   }catch (string wrong) {
-  cout << "Wrong Answer!.\n";
+  cout << "Wrong Answer!!!\n";
   cout << "Answer is: "<<answer_one<<endl;
 } 
 }
@@ -30,7 +30,7 @@ class Quizn2:public Quiz{
       }
   }
   catch (string wrong2) {
-        cout << "Wrong Answer!.\n";
+        cout << "Wrong Answer!!!\n";
   cout << "Answer is: "<<answer_two<<endl;
 } 
 }
@@ -47,8 +47,28 @@ class Quizn2:public Quiz{
           }
       
       }  catch(string wrong3){
-    cout << "Wrong Answer!.\n";
+    cout << "Wrong Answer!!!\n";
   cout << "Answer is: "<<answer_three<<endl;
+  
+      }
+  }
+        
+    };
+    
+    class Quizn4:public Quiz{
+        public:
+         virtual void fourth_question(string fourth_ans){
+      string answer_four = "JavaScript";
+      try{
+          if(fourth_ans == answer_four){
+              cout<<"Correct!"<<endl;
+          }else{
+              throw(fourth_ans);
+          }
+      
+      }  catch(string wrong4){
+    cout << "Wrong Answer!!!\n";
+  cout << "Answer is: "<<answer_four<<endl;
   
       }
   }
@@ -58,9 +78,11 @@ int main(){
     Quiz n;
     Quizn2 n2;
     Quizn3 n3;
+    Quizn4 n4;
     Quiz *q1 = &n;
     Quizn2 *q2 = &n2;
     Quizn3 *q3 = &n3;
+    Quizn4 *q4 = &n4;
      // current date/time based on current system
    time_t now = time(0);
    // convert now to string form
@@ -85,5 +107,12 @@ string question_one = "First Low Layer out of 7 in Osi Layers: ";
      cout<<question_three;
      cin >> ans_three;
      q3->third_question(ans_three);
-    return 0;
+     string ans_four;
+     string question_four = "Is a programming language commonly used in web development,";
+     cout<<question_four<<endl;
+   cout<<"It was originally developed by Netscape as a means to add dynamic and interactive elements to websites: ";
+     cin >> ans_four;
+     q4->fourth_question(ans_four);
+        return 0;
 }
+
