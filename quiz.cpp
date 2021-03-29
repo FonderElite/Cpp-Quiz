@@ -13,8 +13,8 @@ class Quiz{
           throw(answer);
       }
   }catch (string wrong) {
-  cout << "Wrong Answer!!!\n";
-  cout << "Answer is: "<<answer_one<<endl;
+   printf("\x1B[31mWrong Answer!!!\033[0m\n");
+   cout << "Answer is: "<<answer_one<<endl;
 } 
 }
 
@@ -32,7 +32,7 @@ class Quizn2:public Quiz{
       }
   }
   catch (string wrong2) {
-        cout << "Wrong Answer!!!\n";
+        printf("\x1B[31mWrong Answer!!!\033[0m\n");
   cout << "Answer is: "<<answer_two<<endl;
 } 
 }
@@ -49,7 +49,7 @@ class Quizn2:public Quiz{
           }
       
       }  catch(string wrong3){
-    cout << "Wrong Answer!!!\n";
+   printf("\x1B[31mWrong Answer!!!\033[0m\n");
   cout << "Answer is: "<<answer_three<<endl;
   
       }
@@ -69,7 +69,7 @@ class Quizn2:public Quiz{
           }
       
       }  catch(string wrong4){
-    cout << "Wrong Answer!!!\n";
+    printf("\x1B[31mWrong Answer!!!\033[0m\n");
   cout << "Answer is: "<<answer_four<<endl;
   
       }
@@ -87,7 +87,7 @@ class Quizn2:public Quiz{
           }
       
       }  catch(string wrong5){
-  cout << "Wrong Answer!!!\n";
+  printf("\x1B[31mWrong Answer!!!\033[0m\n");
   cout << "Answer is: "<<answer_five<<endl;
   
       }
@@ -140,7 +140,7 @@ string question_one = "First Low Layer out of 7 in Osi Layers: ";
      cout<<question_five;
      cin >> ans_five;
      q5->fifth_question(ans_five);
-     cout<<"\n======================Thank You For Taking the quiz======================";
+       printf("\x1B[32m======================Thank You For Taking the quiz======================\033[0m\t\t");
     return 0;
 }
 
