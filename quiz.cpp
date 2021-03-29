@@ -30,7 +30,7 @@ class Quiz{
 class Quizn2{
     public:
     void question_two(string answer2){
-         string answer_two = "Quantum Computing";
+         string answer_two = "QuantumComputing";
   try{
       if(answer2 == "QuantumComputing"){
           cout<<"Correct Answer!"<<endl;
@@ -179,4 +179,3 @@ string question_one = "First Low Layer out of 7 in Osi Layers: ";
        printf("\x1B[32m======================Thank You For Taking the quiz======================\033[0m\t\t");
     return 0;
 }
-
