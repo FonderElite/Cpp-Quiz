@@ -147,9 +147,10 @@ class Quizn2{
                     string line;
          /* Creating input filestream */ 
        ifstream file("correct/correct.txt");
-       while (getline(file, line));
+       while (getline(file, line)){
         count++;
-        cout << "Numbers of lines in the file : " << count << endl;
+       }
+        cout << "Score: " << count<<"/5" << endl;
               }else{
                   throw(Err);
               }
