@@ -114,7 +114,7 @@ class Quizn2{
                 system("mkdir correct");
        }
   if(stat("correct",&st) == 0){
-        printf(" Finished making Directory.\n");
+        printf("Directory for storing answers is present.\n");
         }
         else{
             throw("Error!");
