@@ -1,5 +1,8 @@
 #include <iostream>
 #include <ctime>
+#include <stdlib.h>
+#include <fstream>
+#include <sys/stat.h>
 using namespace std;
 //First Main Class will be inheritted by other classes
 class Quiz{
@@ -9,6 +12,7 @@ class Quiz{
   try{
       if(answer == "Physical"){
           cout<<"Correct Answer!"<<endl;
+          
       }else{
           throw(answer);
       }
@@ -93,17 +97,39 @@ class Quizn2:public Quiz{
       }
   }
     };
+    class makeFile{
+        public:
+        void checkFile(){
+            try{
+                cout<<"Making a directory to store correct answers..."<<endl;
+                system("sleep 1.5");
+                system("mkdir correct");
+       struct stat st;
+  if(stat("correct",&st) == 0){
+        printf(" Finished making Directory.\n");
+        }
+        else{
+            throw("Error!");
+        }
+    } catch(string filenotfound){
+  printf("\x1B[31mFileNotFoundError\033[0m\n");
+        }
+    }
+    };
 int main(){
     Quiz n;
     Quizn2 n2;
     Quizn3 n3;
     Quizn4 n4;
     Quizn5 n5;
+    makeFile m;
     Quiz *q1 = &n;
     Quizn2 *q2 = &n2;
     Quizn3 *q3 = &n3;
     Quizn4 *q4 = &n4;
     Quizn5 *q5 = &n5;
+    makeFile *fl = &m;
+    fl->checkFile();
      // current date/time based on current system
    time_t now = time(0);
    // convert now to string form
@@ -111,6 +137,7 @@ int main(){
    // convert now to tm struct for UTC
    tm *gmtm = gmtime(&now);
    dt = asctime(gmtm);
+   system("sleep 1");
    cout << "The UTC date and time is:"<< dt << endl;
     cout<<"Quiz By FonderElite"<<endl;
     cout<<"All Answers must begin with a capital letter."<<endl;
@@ -140,6 +167,7 @@ string question_one = "First Low Layer out of 7 in Osi Layers: ";
      cout<<question_five;
      cin >> ans_five;
      q5->fifth_question(ans_five);
+     
        printf("\x1B[32m======================Thank You For Taking the quiz======================\033[0m\t\t");
     return 0;
 }
