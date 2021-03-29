@@ -27,7 +27,7 @@ class Quiz{
 
 };
 
-class Quizn2{
+class Quizn2:public Quiz{
     public:
     void question_two(string answer2){
          string answer_two = "QuantumComputing";
@@ -47,7 +47,7 @@ class Quizn2{
 } 
 }
     };
-    class Quizn3{
+    class Quizn3:public Quiz{
         public:
          virtual void third_question(string third_ans){
       string answer_three = "Pointer";
