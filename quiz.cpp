@@ -1,6 +1,7 @@
 #include <iostream>
 #include <ctime>
 using namespace std;
+//First Main Class will be inheritted by other classes
 class Quiz{
   public:
   virtual void question(string answer){
@@ -18,7 +19,7 @@ class Quiz{
 }
 
 };
-//First Main Class will be inheritted by other classes
+
 class Quizn2:public Quiz{
     public:
     void question_two(string answer2){
