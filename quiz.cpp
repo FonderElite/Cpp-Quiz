@@ -14,7 +14,7 @@ class Quiz{
           cout<<"Correct Answer!"<<endl;
           ofstream file1;
           file1.open ("correct/correct.txt");
-          file1 << "1\n";
+          file1 << "1";
           file1.close();
       }else{
           throw(answer);
@@ -34,9 +34,9 @@ class Quizn2{
   try{
       if(answer2 == "QuantumComputing"){
           cout<<"Correct Answer!"<<endl;
-          ofstream outfile;
-   outfile.open("correct/correct.txt",ios_base::app); // append instead of overwrite
-    outfile << "2";
+          ofstream outfile2;
+   outfile2.open("correct/correct.txt",ios_base::app); // append instead of overwrite
+    outfile2 << "2";
       }else{
         throw(answer2);
       }
@@ -54,6 +54,9 @@ class Quizn2{
       try{
           if(third_ans == answer_three){
               cout<<"Correct!"<<endl;
+          ofstream outfile3;
+   outfile3.open("correct/correct.txt",ios_base::app); // append instead of overwrite
+    outfile3 << "3";
           }else{
               throw(third_ans);
           }
@@ -74,6 +77,9 @@ class Quizn2{
       try{
           if(fourth_ans == answer_four){
               cout<<"Correct!"<<endl;
+          ofstream outfile4;
+         outfile4.open("correct/correct.txt",ios_base::app); // append instead of overwrite
+         outfile4 << "4";
           }else{
               throw(fourth_ans);
           }
@@ -92,6 +98,9 @@ class Quizn2{
       try{
           if(fifth_ans == answer_five){
               cout<<"Correct!"<<endl;
+          ofstream outfile5;
+         outfile5.open("correct/correct.txt",ios_base::app); // append instead of overwrite
+         outfile5 << "5";
           }else{
               throw(fifth_ans);
           }
@@ -113,6 +122,9 @@ class Quizn2{
                 system("sleep 1.5");
                 system("mkdir correct");
        }
+       if(stat("correct/correct.txt",&st) == 0){
+          system("rm -r correct/correct.txt")
+}
   if(stat("correct",&st) == 0){
         printf("Directory for storing answers is present.\n");
         }
@@ -179,3 +191,4 @@ string question_one = "First Low Layer out of 7 in Osi Layers: ";
        printf("\x1B[32m======================Thank You For Taking the quiz======================\033[0m\t\t");
     return 0;
 }
+             
