@@ -12,7 +12,10 @@ class Quiz{
   try{
       if(answer == "Physical"){
           cout<<"Correct Answer!"<<endl;
-          
+          ofstream file1;
+          file1.open ("correct/correct.txt");
+          file1 << "1\n";
+          file1.close();
       }else{
           throw(answer);
       }
@@ -24,13 +27,16 @@ class Quiz{
 
 };
 
-class Quizn2:public Quiz{
+class Quizn2{
     public:
     void question_two(string answer2){
          string answer_two = "Quantum Computing";
   try{
-      if(answer2 == answer_two){
+      if(answer2 == "QuantumComputing"){
           cout<<"Correct Answer!"<<endl;
+          ofstream outfile;
+   outfile.open("correct/correct.txt",ios_base::app); // append instead of overwrite
+    outfile << "2";
       }else{
         throw(answer2);
       }
@@ -41,7 +47,7 @@ class Quizn2:public Quiz{
 } 
 }
     };
-    class Quizn3:public Quiz{
+    class Quizn3{
         public:
          virtual void third_question(string third_ans){
       string answer_three = "Pointer";
@@ -101,10 +107,12 @@ class Quizn2:public Quiz{
         public:
         void checkFile(){
             try{
-                cout<<"Making a directory to store correct answers..."<<endl;
+       struct stat st;
+       if (stat("correct",&st) != 0){
+             cout<<"Making a directory to store correct answers..."<<endl;
                 system("sleep 1.5");
                 system("mkdir correct");
-       struct stat st;
+       }
   if(stat("correct",&st) == 0){
         printf(" Finished making Directory.\n");
         }
